@@ -1,0 +1,326 @@
+/* RESET CSS */
+:root {
+  --main-font: "Amatic SC";
+  --font-size: 16px;
+  --main-color: #f7df1e;
+  --second-color: #222;
+  --main-modal-color: rgba(247, 222, 30, 0.85);
+  --second-modal-color: rgba(34, 34, 34, 0.85);
+  --container-width: 1200px;
+}
+
+html {
+  box-sizing: border-box;
+  font-family: var(--main-font);
+  font-size: var(--font-size);
+  scroll-behavior: smooth;
+}
+
+/* PARA QUE HTML HEREDE LO SIGUIENTE USAMOS * */
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* MENU HAMBURGUESA */
+
+.header {
+  position: sticky;
+  z-index: 997;
+  top: 0;
+  padding: 1rem;
+  background-color: var(--main-color);
+  color: var(--second-color);
+}
+
+.header h1 {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.section {
+  padding: 2rem;
+  padding-top: 4rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  max-width: var(--container-width);
+  min-height: 100vh;
+  text-align: center;
+}
+
+.panel {
+  position: fixed;
+  z-index: 998;
+  background-color: var(--second-modal-color);
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  opacity: 0;
+  overflow-y: auto;
+  transition: transform 0.3s ease;
+  /* de arriba */
+
+  transform: translate(0, -100%);
+  /* de abajo */
+  /* transform: translate(0, 100%); */
+}
+
+.panel.is-active {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+
+/* el asterisco hace referencia a todo lo que este dentro de panel-btn, recordar que matches recibe un selector valido de css */
+/* .panel-btn *  */
+
+.panel-btn {
+  position: fixed;
+  z-index: 999;
+  bottom: 1vh;
+  right: 1vh;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  justify-content: center !important;
+  align-items: center !important;
+  background-color: var(--main-color) !important;
+}
+
+.menu {
+  width: inherit;
+  /* inherit hace que herede la anchura del contenedor */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+
+.menu a {
+  padding: 2rem;
+  width: inherit;
+  display: block;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: var(--main-color);
+  transition: all 0.3s ease;
+}
+
+.menu a:hover {
+  font-weight: bold;
+  color: var(--second-color);
+  background-color: var(--main-modal-color);
+}
+
+/* EVENTOS DEL TECLADO */
+
+.stage {
+  display: flex;
+  min-height: 50vh;
+  background-color: var(--second-color);
+}
+
+.ball {
+  margin: auto;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: var(--main-color);
+}
+
+/* SCROLLTOPBUTTON */
+
+.scroll-top-btn {
+  position: fixed;
+  z-index: 999;
+  bottom: 1vh;
+  right: calc(4.25rem + 1vw);
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: var(--main-color);
+  color: var(--second-color);
+  cursor: pointer;
+  outline: 0;
+  border: 0;
+  transition: all 0.3s ease-out;
+}
+
+.scroll-top-btn:hover {
+  background-color: var(--second-color);
+  color: var(--main-color);
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* DARK MODE BTN */
+#dark-mode-btn {
+  position: fixed;
+  z-index: 999;
+  bottom: 1vh;
+  left: 1vw;
+  height: 3rem;
+  width: 3rem;
+  border-radius: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: var(--main-color);
+  cursor: pointer;
+  outline: 0;
+  border: none;
+  transition: all 0.3s ease-out;
+}
+
+#dark-mode-btn img {
+  border: none;
+  outline: none;
+  display: flex;
+  border: none;
+  outline: 0;
+}
+
+#dark-mode-btn:hover {
+  background-color: var(--second-color);
+  color: var(--main-color);
+}
+
+/* DARK MODE BODY */
+
+.dark-mode {
+  background-color: var(--second-color);
+  color: var(--main-color);
+}
+
+/* NETWORK STATUS */
+
+.online,
+.offline {
+  position: sticky;
+  top: 0;
+  z-index: 3000;
+  padding: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  background-color: green;
+  color: #fff;
+}
+
+.offline {
+  background-color: red;
+}
+
+/*SEARCH FILTERS*/
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+/* responsive automatico sin necesidad de mediaquery*/
+}
+
+.card {
+  background-color: var(--second-color);
+  color: var(--main-color);
+  transition: all 0.3s ease-out;
+}
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card figcaption {
+  padding: 1rem;
+}
+
+.filter { /*permite discriminar los resultados que no coincidan con lo que el user busque*/
+  /* display: none; display none no es animable*/
+  visibility: hidden;
+  opacity: 0;
+  order: 1; /* sirve para flexbox o grid, para correr las tarjetas que se oculten, vayan al final y las que queden, al principio */
+}
+
+/* RESPONSIVE SLIDER */
+
+.slider {
+  position: relative;
+  width: 80%;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.slider-slides{
+  position: relative;
+  height: 400px;
+}
+
+.slider-slide {
+  position: absolute;
+  height: 100%; /*del contenedor padre, por eso es relative el padre*/
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease;
+}
+
+.slider-slide img {
+  height: inherit;
+  width: inherit; /* inherit hace que herede*/
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.slider-slide.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.slider-btns{
+  position: absolute;
+  width: 100%;
+  top: 50%;
+  display: flex; /*usamos flexbox para ubicarlos en una fila, los elementos hijos se van a poner en fila*/
+  justify-content: space-between;
+  font-size: 3rem;
+  font-weight: bold;
+}
+
+.slider a {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  border: thin solid black;
+  text-decoration: none;
+  background-color: white;
+  color: black;
+  transition: all 0.3s ease;
+}
+
+.slider a:hover {
+  color: #4d4d4d;
+}
