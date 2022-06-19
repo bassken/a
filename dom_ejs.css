@@ -238,7 +238,7 @@ img {
 .cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-/* responsive automatico sin necesidad de mediaquery*/
+  /* responsive automatico sin necesidad de mediaquery*/
 }
 
 .card {
@@ -255,7 +255,8 @@ img {
   padding: 1rem;
 }
 
-.filter { /*permite discriminar los resultados que no coincidan con lo que el user busque*/
+.filter {
+  /*permite discriminar los resultados que no coincidan con lo que el user busque*/
   /* display: none; display none no es animable*/
   visibility: hidden;
   opacity: 0;
@@ -271,7 +272,7 @@ img {
   text-align: center;
 }
 
-.slider-slides{
+.slider-slides {
   position: relative;
   height: 400px;
 }
@@ -299,7 +300,7 @@ img {
   visibility: visible;
 }
 
-.slider-btns{
+.slider-btns {
   position: absolute;
   width: 100%;
   top: 50%;
@@ -323,4 +324,143 @@ img {
 
 .slider a:hover {
   color: #4d4d4d;
+}
+
+/*SCROLL SPY*/
+
+@media screen and (min-width: 860px) {
+  body {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-rows: 4rem auto;
+    grid-template-areas:
+      "header header"
+      "main   panel";
+  }
+  main {
+    grid-area: main;
+  }
+  .header {
+    grid-area: header;
+  }
+  .panel {
+    grid-area: panel;
+    align-self: start;
+    position: sticky;
+    top: 4rem;
+    transform: translate(0, 0);
+    background-color: var(--second-color);
+    justify-content: flex-start;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .panel-btn {
+    display: none;
+  }
+
+  .menu {
+    justify-content: start;
+    text-align: left;
+  }
+
+  .menu a {
+    font-size: 1rem;
+    padding: 0.75rem;
+  }
+
+  .menu a:hover,
+  .menu a.active {
+    /*esto aplica a los enlaces dentro del menu y que tengan la clase active (los enlaces que tengan la clase active que esten dentro de un elemento que este dentro de la clase menu) */
+    color: var(--second-color);
+    background-color: var(--main-color);
+  }
+
+  .scroll-top-btn {
+    right: initial;
+    left: calc(4.25rem + 1vh);
+    height: 3rem;
+    width: 3rem;
+  }
+}
+
+/* ****** Contact Form Validations ******* */
+
+.contact-form {
+  --form-ok-color: #4caf50;
+  --form-error-color: #f44336;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+.contact-form > * {
+  padding: 0.5rem;
+  margin: 1rem auto;
+  width: 100%;
+  display: block;
+}
+/* el asterisco significa todos los hijos directos de conact form*/
+
+.contact-form textarea {
+  resize: none;
+}
+
+.contact-form legend,
+.contact-form-response{
+  font-size: 1.5 rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.contact-form input,
+.contact-form textarea{
+  font-size: 1rem;
+  font-family: "Amatic SC";
+}
+
+.contact-form input[type="submit"] {
+  width: 50%;
+  font-weight: bold;
+  cursor: pointer;
+}
+.contact-form *::placeholder {
+  /* a todos los elementos del formulario que tengan placeholder*/
+  color: #000;
+}
+
+.contact-form [required]:valid {
+  /*para cuando el texto sea valido y tenga el selector required*/
+border: thin solid var(--form-ok-color);
+}
+
+.contact-form [required]:invalid{
+  border: thin solid var(--form-error-color);
+}
+.contact-form-error {
+  margin-top: -1rem;
+  font-size: 80%;
+  background-color: var(--form-error-color);
+  color: #fff;
+  transition: all 800ms ease;
+}
+
+.contact-form-error.is-active{
+  display: block;
+  animation: show-message 1s 1 normal 0s ease-out both;
+}
+
+.none {
+  display: none;
+}
+
+@keyframes show-message {
+  0% {
+    visibility: hidden;
+    opacity: 0;
+  }
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
 }

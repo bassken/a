@@ -13,6 +13,10 @@ import getGeolocation from "./inside-dom-ejs/geo.js";
 import searchFilters from "./inside-dom-ejs/search_filters.js";
 import draw from "./inside-dom-ejs/sorteo.js";
 import slider from "./inside-dom-ejs/carrousel.js";
+import scrollSpy from "./inside-dom-ejs/scroll_spy.js";
+import smartVideo from "./inside-dom-ejs/video_int.js";
+import contactFormV from "./inside-dom-ejs/validation_form.js";
+import speechReader from "./inside-dom-ejs/narrator.js";
 
 const d = document;
 
@@ -46,6 +50,9 @@ d.addEventListener("DOMContentLoaded", (e) => {
   searchFilters(".card-filter", ".card");
   draw("#winner-btn", ".player");
   slider();
+  scrollSpy();
+  smartVideo();
+  contactFormV();
 });
 
 //eventos del teclado, (atajos), dentro del objeto keyboardevent, el keycode es una propiedad muy importante ya que cada tecla tiene un codigo.
@@ -67,3 +74,4 @@ d.addEventListener("keypress", (e) => {
 
 
 networkStatus();
+speechReader();
